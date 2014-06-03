@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+#{set title:'Pricing' /}
+
+<div class="container">
+    <div class="row">
+        <h3 class="text-center">Pricing plans</h3>
+        <hr>
+        <div class="col-sm-3">
+            <div class="panel panel-success text-center">
+                <div class="panel-heading">
+                    <h3>Basic</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title price">Free</span></h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Manage Up to 3 Foster Homes</li>
+                    <li class="list-group-item">Manage Up to 20 Users</li>
+                    <li class="list-group-item">Manage Up to 50 Children</li>
+                    <li class="list-group-item"><a href="@{Application.register(1)}" class="btn btn-success">Sign Up Now!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-info text-center">
+                <div class="panel-heading">
+                    <h3>Plus</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title price">$59<span class="price-month">monthly</span></h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Manage Up to 5 Foster Homes</li>
+                    <li class="list-group-item">Manage Up to 20 Users</li>
+                    <li class="list-group-item">Manage Up to 100 Children</li>
+                    <li class="list-group-item"><a href="@{Application.register(2)}" class="btn btn-info">Sign Up Now!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-warning text-center">
+                <div class="panel-heading">
+                    <h3>Premium</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title price">$79<span class="price-month">monthly</span></h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Manage Up to 20 Foster Homes</li>
+                    <li class="list-group-item">Manage Up to 100 Users</li>
+                    <li class="list-group-item">Manage Up to 500 Children</li>
+                    <li class="list-group-item"><a href="@{Application.register(3)}" class="btn btn-warning">Sign Up Now!</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-primary text-center">
+                <div class="panel-heading">
+                    <h3>Ultimate</h3>
+                </div>
+                <div class="panel-body">
+                    <h3 class="panel-title price">$129<span class="price-month">monthly</span></h3>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Unlimited Foster Homes</li>
+                    <li class="list-group-item">Unlimited Users</li>
+                    <li class="list-group-item">Unlimited Children</li>
+                    <li class="list-group-item"><a href="@{Application.register(4)}" class="btn btn-primary">Sign Up Now!</a></li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</div>

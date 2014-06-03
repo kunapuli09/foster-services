@@ -1,0 +1,114 @@
+ ChildrenDoc = {
+    "First Name" : "",
+    "Last Name" : "",
+    "DateOfBirth" : "",
+    "Gender" : "",
+    "Medicaid Number" : "",
+    "Foster Parent Phone" : "",
+    "FosterParentObjectId" : "",
+    "NBC DUE" : "",
+    "PlacementDate" : "",
+    "IntakePacket" : "PROVIDE/CASEWORKER",
+    "MedicalExam" : "",
+    "AnnualMedicalExamDueDate" : "",
+    "Dental" : "",
+    "6MonthDentalExamDueDate" : "",
+    "EyeExamDue" : "",
+    "EyeExam" : "",
+    "TreatmentPlanDate" : "",
+    "HealthPassport" : "",
+    "CommentsOnDay7" : "",
+    "CommentsOnDay14" : ""
+  }
+
+
+
+  FosterHomeDoc = {
+    "objectId" : "fosterHomeObjectId",
+    "HomeName" : "",
+    "HomeInspectionDate" : "",
+    "Fire" : "",
+    "IssuanceDate" : "",
+    "Address" : {
+      "Street" : "",
+      "City" : "",
+      "State" : "",
+      "ZipCode" : "",
+      "County" : ""
+    },
+    "parents" : [
+      {
+        "FirstName" : "",
+        "LastName" : "",
+        "DriversLicenceExpiryDate" : "",
+        "isPrimaryForBilling" : "",
+        "VehicleRegistrationNumber" : "",
+        "MedicalEvaluationDate" : "",
+        "AutoInsuranceExpiryDate" : "",
+        "CPRFirstAid" : "",
+        "PetVaccination" : "",
+        "COREExp" : "",
+        "Orientation" : "",
+        "SemiDue" : "",
+        "AgencyVisit" : "",
+        "OngoingTraining" : "",
+        "Comments" : "",
+        "Amm.HS" : ""
+      }
+    ],
+    "fosterChildren" : [
+      {
+        "childObjectId" : "childObjectId3",
+        "ChildName" : "",
+        "CaseAgentName" : "",
+        "PlacementDate" : "",
+        "EndDate" : "",
+        "CareServiceRate" : {
+          "Month" : "",
+          "ChildRate" : 0,
+          "AdminRate" : "",
+          "Days" : "",
+          "CombTotal" : "",
+          "AdminTotal" : "",
+          "ProviderTotal" : "",
+          "GrandTotal" : ""
+        }
+      },
+      {
+        "ChildName" : "",
+        "childObjectId" : "childObjectId3",
+        "StartDate" : "",
+        "EndDate" : "",
+        "CareServiceRate" : {
+          "Month" : "",
+          "ChildRate" : 0,
+          "AdminRate" : "",
+          "Days" : "",
+          "CombTotal" : "",
+          "AdminTotal" : "",
+          "ProviderTotal" : "",
+          "GrandTotal" : ""
+        }
+      }
+    ],
+    "biologicalChildren" : [
+      "childObjectId1",
+      "childObjectId2"
+    ],
+    "CaseWorker" : {
+      "employeeObjectId" : "ObjectIdFromUsersCollection",
+      "Name" : ""
+    }
+  }
+
+ContactDoc = {
+    "Email" : "kunapuli09@gmail.com",
+    "Fax" : "",
+    "FirstName" : "krishna",
+    "LastName" : "",
+    "phone" : "7202802571",
+    "password" : "password",
+    "role" : "OWNER",
+    "ObjectId" : "51c25b640364a3b7c24240d2",
+    "County" : ""
+  }

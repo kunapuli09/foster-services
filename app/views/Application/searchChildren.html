@@ -1,0 +1,57 @@
+#{extends 'main.html' /}
+#{set title:'Search Children' /}
+
+<div class="container">
+    <p>
+        <a href="@{Application.children()}" title="Add child"
+           class="btn btn-primary btn-large"
+                >Add child</a>
+    </p>
+    #{form @searchChildren(), id:'searchChildren'}
+    <div class="form-group">
+        <label class="lastName"><h4>Last Name</h4></label>
+        <div class="controls">
+            <input type="text" class="form-control" name="lastName" value="">
+            <span class="error">${errors.forKey('child.lastName')}</span>
+
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="searchChildren">Search</button>
+        <a href="@{Application.searchChildren()}"  class="btn">Cancel</a>
+    </div>
+    #{/form}
+</div>
+#{if paginator !=null && paginator.size()  > 0}
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th class="name">First Name</th>
+        <th class="email">Date Of Birth</th>
+        <th class="phone">Placement Date</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{paginate.list items:paginator, as:'child'}
+    <tr class="child" childId="${child.id}" draggable="true">
+        <td id="name">${child.firstName}</td>
+        <td id="email">${child.dateOfBirth}</td>
+        <td id="phone">${child.placementDate}</td>
+        <td class="table_column_actions">
+            <a href="@{Application.children(child.id)}" class="btn btn-info btn-large">Update</a>
+            <a href="@{Application.addChildToHome(child.id)}" class="btn btn-primary btn-large">Place child in a home</a>
+            <a href="@{Application.searchChildren()}" class="btn btn-mini btn-danger" data-confirm="Delete Contact.  Are you sure?"
+               data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-remove"></i></a>
+        </td>
+    </tr>
+    #{/paginate.list}
+    #{paginate.controls items:paginator /}
+    #{paginate.summary items:paginator /}
+    </tbody>
+</table>
+#{/if}
+#{else}
+Child not found
+#{/else}
+

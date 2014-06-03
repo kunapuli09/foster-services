@@ -1,0 +1,43 @@
+#{extends 'main.html' /}
+#{set title:'Search Parents' /}
+<legend>Parents at ${home.name}</legend>
+<div class="container">
+    <p>
+        <a href="@{Application.addParent(home.id,null,null,null)}" title="Add parent"
+           class="btn btn-primary btn-large"
+                >Add parent</a>
+    </p>
+</div>
+#{if paginator !=null && paginator.size()  > 0}
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th class="name">Name</th>
+        <th class="email">Email</th>
+        <th class="phone">Phone</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{paginate.list items:paginator, as:'parent'}
+    <tr class="parent" homeId="${home.id}" draggable="true">
+        <td id="name">${parent.name}</td>
+        <td id="email">${parent.email}</td>
+        <td id="phone">${parent.phone}</td>
+        <td class="table_column_actions">
+            <a href="@{Application.addParent(home.id,parent.name, parent.email, parent.phone)}" class="btn btn-primary btn-large">Update parent</a>
+            <a href="" class="btn btn-mini btn-danger" data-confirm="Delete Contact.  Are you sure?"
+               data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-remove"></i></a>
+        </td>
+    </tr>
+    #{/paginate.list}
+    #{paginate.controls items:paginator /}
+    #{paginate.summary items:paginator /}
+    </tbody>
+</table>
+
+#{/if}
+#{else}
+Child not found
+#{/else}
+

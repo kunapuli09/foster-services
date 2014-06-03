@@ -1,0 +1,96 @@
+#{extends 'main.html' /}
+#{set title:'Place Child' /}
+<legend>Place Child at a Foster Home</legend>
+
+#{form @placeChild()}
+<input type="hidden" name="email" value="${session?.user}">
+<input type="hidden" name="agencyId" value="${session?.agencyId}">
+<input type="hidden" name="childId" value="${child?.id}">
+<!--<input type="hidden" name="fosterHomeId" value="${session?.fosterHomeId}"> -->
+<form class="form-horizontal">
+<fieldset class="form-group success">
+    <div class="dropdown">
+        <label class="control-label">Choose a home</label>
+        <div class="controls">
+        #{if homes!=null && homes.size() > 0}
+        #{select 'fosterHomeId', class: 'dropdown-menu-left', value:home?.id}
+        #{list items:homes, as:'home'}
+            #{if home.id.equals(child.fosterHomeId)}
+                <option value="${home.id}" selected>${home.name}</option>
+            #{/if}
+            #{else}
+                <option value="${home.id}">${home.name}</option>
+            #{/else}
+        #{/list}
+        #{/select}
+        #{/if}
+        #{else}
+        <a href="@{Application.addFosterHome()}" title="Add foster home"
+           class="btn btn-primary btn-large"
+                >Add a foster home</a>
+        #{/else}
+        </div>
+    </div>
+    <div class="dropdown">
+        <label class="control-label">Choose a case worker</label>
+        <div class="controls">
+        #{if caseWorkers!=null && caseWorkers.size() > 0}
+        #{select 'caseWorkerId', value:caseWorker?.id}
+        #{list items:caseWorkers, as:'caseWorker'}
+            #{if child.caseWorkerId.equals(caseWorker.id)}
+            <option value="${caseWorker.id}" selected>${caseWorker.name}</option>
+            #{/if}
+            #{else}
+            <option value="${caseWorker.id}">${caseWorker.name}</option>
+            #{/else}
+        #{/list}
+        #{/select}
+        #{/if}
+        #{else}
+        <a href="@{Application.addFosterHome()}" title="Add foster home"
+           class="btn btn-primary btn-large"
+                >Add a foster home</a>
+        #{/else}
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="placementDate"><i class="glyphicon glyphicon-calendar"> </i>Placement Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="placementDate" id="placementDate" value="${child?.placementDate}">
+            #{if errors.forKey('child.placementDate')}
+            <span class="alert alert-error">${errors.forKey('child.placementDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="childRate">Child Rate</label>
+
+        <div class="controls">
+            $<input type="number" min="0" max="9999" step="0.01" size="4" class="form-control" name="childRate" id="childRate" value="${child?.childCareRate?.childRate}">
+            #{if errors.forKey('child.childCareRate.childRate')}
+            <span class="alert alert-error">${errors.forKey('child.childCareRate.childRate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label" for="fee">Membership Fee</label>
+
+
+    </div>
+</fieldset>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary" id="addFosterHome">Place Child</button>
+    <a href="@{Application.index()}" class="btn">Cancel</a>
+</div>
+</form>
+#{/form}
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+ $(".date-picker").datepicker();
+</script>

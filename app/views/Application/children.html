@@ -1,0 +1,289 @@
+#{extends 'main.html' /}
+#{set title:'Children' /}
+<legend>Add Child</legend>
+#{form @saveChild()}
+<input type="hidden" name="email" value="${session?.user}">
+<input type="hidden" name="child.agencyId" value="${session?.agencyId}">
+<form class="form-horizontal">
+<fieldset class="form-group success">
+
+<div class="col-md-4">  <!-- 1ST COLUMN -->
+    <div class="form-group">
+        <label class="control-label" for="firstName">First Name</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" name="child.firstName" id="firstName" value="${child?.firstName}">
+            #{if errors.forKey('child.firstName')}
+            <span class="alert alert-error">${errors.forKey('child.firstName')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label" for="lastName">Last Name</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" name="child.lastName" id="lastName" value="${child?.lastName}">
+            #{if errors.forKey('child.lastName')}
+            <span class="alert alert-error">${errors.forKey('child.lastName')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="dateOfBirth"> <i class="glyphicon glyphicon-calendar"> </i>Date of Birth</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="child.dateOfBirth" id="dateOfBirth" value="${child?.dateOfBirth}">
+            #{if errors.forKey('child.dateOfBirth')}
+            <span class="alert alert-error">${errors.forKey('child.dateOfBirth')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Gender</label>
+        <div class="controls">
+            #{select 'child.gender', value:child?.gender}
+            #{option "M"}Male#{/option}
+            #{option "F"}Female#{/option}
+            #{/select}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="medicaidNumber">Medicaid Number</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" name="child.medicaidNumber" id="medicaidNumber" value="${child?.medicaidNumber}">
+            #{if errors.forKey('child.medicaidNumber')}
+            <span class="alert alert-error">${errors.forKey('child.medicaidNumber')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label">County</label>
+        <div class="controls">
+            #{select 'child.county', value:child?.county}
+            #{option "Arapahoe"}Arapahoe#{/option}
+            #{option "Denver"}Denver#{/option}
+            #{option "Douglas"}Douglas#{/option}
+            #{/select}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="fosterParentPhone">Foster Parent Phone</label>
+
+        <div class="controls">
+            <input type="tel" class="form-control" name="child.fosterParentPhone" id="fosterParentPhone" value="${child?.fosterParentPhone}">
+            #{if errors.forKey('child.fosterParentPhone')}
+            <span class="alert alert-error">${errors.forKey('child.fosterParentPhone')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="nbcDueDate"><i class="glyphicon glyphicon-calendar"> </i>NBC Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="child.nbcDueDate" id="nbcDueDate" value="${child?.nbcDueDate}">
+            #{if errors.forKey('child.nbcDueDate')}
+            <span class="alert alert-error">${errors.forKey('child.nbcDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="placementDate"><i class="glyphicon glyphicon-calendar"> </i>Placement Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="child.placementDate" id="placementDate" value="${child?.placementDate}">
+            #{if errors.forKey('child.placementDate')}
+            <span class="alert alert-error">${errors.forKey('child.placementDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" >Intake Packet (Provider / Caseworker)</label>
+
+        <div class="controls">
+            #{select 'child.intakePacket', value:child?.intakePacket}
+            #{option "PROVIDER"}Provider#{/option}
+            #{option "CASE_WORKER"}Case Worker#{/option}
+            #{/select}
+        </div>
+    </div>
+</div>
+<!-- END SPAN 1-->
+
+<div class="col-md-4"> <!-- 2ND COLUMN -->
+    <div class="form-group">
+        <label class="control-label" for="medicalExamDate"><i class="glyphicon glyphicon-calendar"> </i>Medical Exam Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="child.medicalExamDate" id="medicalExamDate" value="${child?.medicalExamDate}">
+            #{if errors.forKey('child.medicalExamDate')}
+            <span class="alert alert-error">${errors.forKey('child.medicalExamDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="annualMedExamDueDate"><i class="glyphicon glyphicon-calendar"> </i>Annual Medical Exam Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="child.annualMedExamDueDate" id="annualMedExamDueDate" value="${child?.annualMedExamDueDate}">
+            #{if errors.forKey('child.annualMedExamDueDate')}
+            <span class="alert alert-error">${errors.forKey('child.annualMedExamDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="dentalExamDate"><i class="glyphicon glyphicon-calendar"> </i>Dental Exam</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" id="dentalExamDate" name="child.dentalExamDate" value="${child?.dentalExamDate}">
+            #{if errors.forKey('child.dentalExamDate')}
+            <span class="alert alert-error">${errors.forKey('child.dentalExamDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="dentalExamDueDate"><i class="glyphicon glyphicon-calendar"> </i>Dental Exam Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" id="dentalExamDueDate" name="child.dentalExamDueDate" value="${child?.dentalExamDueDate}">
+            #{if errors.forKey('child.dentalExamDueDate')}
+            <span class="alert alert-error">${errors.forKey('child.dentalExamDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="eyeExamDate"><i class="glyphicon glyphicon-calendar"> </i>Eye Exam Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" id="eyeExamDate" name="child.eyeExamDate"
+                   value="${child?.eyeExamDate}">
+            #{if errors.forKey('child.eyeExamDate')}
+            <span class="alert alert-error">${errors.forKey('child.eyeExamDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="eyeExamDueDate"><i class="glyphicon glyphicon-calendar"> </i>Eye Exam Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" id="eyeExamDueDate" name="child.eyeExamDueDate"
+                   value="${child?.eyeExamDueDate}">
+            #{if errors.forKey('child.eyeExamDueDate')}
+            <span class="alert alert-error">${errors.forKey('child.eyeExamDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="treatmentPlanDate"><i class="glyphicon glyphicon-calendar"> </i>Treatment Plan Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" id="treatmentPlanDate" name="child.treatmentPlanDate" value="${child?.treatmentPlanDate}">
+            #{if errors.forKey('child.treatmentPlanDate')}
+            <span class="alert alert-error">${errors.forKey('child.treatmentPlanDate')}</span>
+            #{/if}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="healthPassport">Health Passport</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" id="healthPassport" name="child.healthPassport" value="${child?.healthPassport}">
+            #{if errors.forKey('child.healthPassport')}
+            <span class="alert alert-error">${errors.forKey('child.healthPassport')}</span>
+            #{/if}
+        </div>
+    </div>
+</div>
+<!-- END SPAN 2-->
+
+<div class="col-md-4"> <!-- 3rd COLUMN-->
+    <div class="form-group">
+        <label class="control-label" for="commentsDaySeven">Comments-On-Day-7</label>
+
+        <div class="controls">
+            <textarea class="form-control" id="commentsDaySeven" name="child.commentsDaySeven" value="${child?.commentsDaySeven}"></textarea>
+                #{if errors.forKey('child.commentsDaySeven')}
+                <span class="alert alert-error">${errors.forKey('child.commentsDaySeven')}</span>
+                #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="commentsDayFourteen">Comments-On-Day-14</label>
+
+        <div class="controls">
+            <textarea class="form-control" id="commentsDayFourteen" name="child.commentsDayFourteen" value="${child?.commentsDayFourteen}"></textarea>
+                #{if errors.forKey('child.commentsDayFourteen')}
+                <span class="alert alert-error">${errors.forKey('child.commentsDayFourteen')}</span>
+                #{/if}
+
+        </div>
+    </div>
+</div>
+<!-- END SPAN 3-->
+</fieldset>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary" id="saveChild">Save Child</button>
+    <a href="@{Application.searchChildren()}" class="btn">Cancel</a>
+</div>
+</form>
+#{/form}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+ $(".date-picker").datepicker();
+</script>
+
+<!--
+<script>
+  $(document).ready(function() {
+    $("#dateOfBirth").datepicker();
+    $("#nbcDueDate").datepicker();
+    $("#placementDate").datepicker();
+    $("#medicalExamDate").datepicker();
+    $("#annualMedExamDueDate").datepicker();
+    $("#dentalExamDate").datepicker();
+    $("#dentalExamDueDate").datepicker();
+    $("#eyeExamDate").datepicker();
+    $("#eyeExamDueDate").datepicker();
+    $("#treatmentPlanDate").datepicker();
+  });
+
+  $(".date-picker").on("change", function () {
+    var id = $(this).attr("id");
+    var val = $("label[for='" + id + "']").text();
+    $("#msg").text(val + " changed");
+});
+</script>
+-->

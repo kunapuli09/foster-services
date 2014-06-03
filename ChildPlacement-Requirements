@@ -1,0 +1,34 @@
+As An Agency Owner I would like to signup and pay for my monthly subscription
+As An Agency Owner I would like to add/update/delete my Employees
+As An Agency Owner/CaseWorker/Employee I would like to add/update/delete a child to the system
+As An Agency Owner/CaseWorker/Employee I would like to add a FosterHome Information to the system
+As An Agency Owner/CaseWorker/Employee I would like to add/edit a Foster Parents Information
+As An Agency Owner/CaseWorker/Employee I would like to associate children to existing FosterHomes
+As An Agency Owner/CaseWorker/Employee I would like to add/edit service rates to existing FosterHomes
+As An Agency Owner I would like to generate payment totals
+
+Functionality Pending:
+payment integration
+report generation
+remove session attributes and use Cache
+wildcard search on names
+show agency name, foster home name for child
+create application in cloudbees, jenkins job
+change email template
+
+bugs:
+1) addParent checkbox -- fixed
+2) dates -- fixed
+3) encode URL
+4) Float 2 decimals
+5) Combo box doesn't populate with selected values
+6) Add new employee, cancel link in the search is not working
+7) forgot password doesn't show a success dialog
+8) Remove Starpath from Recover password page
+9) Add logic for gender, case provider radio button
+
+Tracking, Mental Health, HIPPA, Document Management, Notifications/Ticklers, More medical forms, audit and workflow
+
+3000 initial setup 450 per month.
+
+add bio child to fosterhome, status

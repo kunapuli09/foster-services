@@ -1,0 +1,63 @@
+#{extends 'main.html' /}
+#{set title:'Index' /}
+
+#{if flash.success}
+<div class="modal show" id="myModal">
+    <div class="modal-header">
+        <a href="@{index()}" class="close" data-dismiss="modal">×</a>
+        <h3>Success Message</h3>
+    </div>
+    <div class="modal-body">
+        <div class="alert alert-success">
+            <h4 class="alert-heading">Success!</h4>
+            ${flash.success}
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="@{index()}" class="btn btn-primary" data-dismiss="modal">Dismiss</a>
+    </div>
+</div>
+#{/if}
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron" style="background-image: url(public/images/momchild.png); background-repeat: no-repeat; background-position: right; background-color: white;">
+        <h2> >${session?.count} Users are Signed up</h2>
+        <h2> >Please Sign-up for Foster Care</h2>
+        <h2> >Multiple features available for easier child placement</h2> <h1 class="text-info">Services for Child Placement</h1>
+        <p></p>
+        <h2>Take a Stand for a child in need</h2>
+        <p></p>
+        #{if session.user == null}
+        <p class="well span7">Are You an Agency looking to manage your <b>Child Placements ?</b> <a class="btn btn-warning btn-large" href="@{register(1)}">Free SignUp Now &raquo;</a></p>
+        #{/if}
+
+
+    </div>
+
+<div class="container">
+    <!-- Example row of columns -->
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Case Agents</h2>
+
+            <p> Easily create new case agents that keep track of children</p>
+
+            <p><a class="btn btn-success btn-large" href="@{Application.home()}">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Foster Home</h2>
+
+            <p> Add children to foster homes that have undergone full background checks </p>
+
+            <p><a class="btn btn-success btn-large" href="@{Application.home()}">View details &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>More Services</h2>
+
+            <p> We are creating a SaaS product that helps the case workers, parents, and the CHILD<br>
+            </p>
+
+            <p><a class="btn btn-success btn-large" href="@{Application.home()}">View details &raquo;</a></p>
+        </div>
+    </div>
+</div> <!-- /container -->

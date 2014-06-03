@@ -1,0 +1,93 @@
+#{extends 'main.html' /}
+#{set title:'Foster Home' /}
+<legend>Add Foster Home Information</legend>
+#{form @saveFosterHome()}
+<input type="hidden" name="email" value="${session?.user}">
+<input type="hidden" name="home.agencyId" value="${session?.agencyId}">
+<form class="form-horizontal">
+<fieldset class="form-group success">
+
+    <div class="form-group">
+        <label class="control-label" for="name">Home Name</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" name="home.name" id="name" value="${home?.name}">
+            #{if errors.forKey('home.name')}
+            <span class="alert alert-error">${errors.forKey('child.firstName')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label class="control-label" for="county">County</label>
+
+        <div class="controls">
+            <input type="text" class="form-control" name="home.county" id="county" value="${home?.county}">
+            #{if errors.forKey('home.county')}
+            <span class="alert alert-error">${errors.forKey('home.county')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="homeInspectionDate"><i class="glyphicon glyphicon-calendar"> </i>Home Inspection Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="home.homeInspectionDate" id="homeInspectionDate" value="${home?.homeInspectionDate}"> *
+            #{if errors.forKey('home.homeInspectionDate')}
+            <span class="alert alert-error">${errors.forKey('home.homeInspectionDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="petVaccinationDate"><i class="glyphicon glyphicon-calendar"> </i>Pet Vaccination Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="home.petVaccinationDate" id="petVaccinationDate" value="${home?.petVaccinationDate}"> *
+            #{if errors.forKey('home.petVaccinationDate')}
+            <span class="alert alert-error">${errors.forKey('home.petVaccinationDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="zoningHealthFireEveryTwoYears"><i class="glyphicon glyphicon-calendar"> </i>Zoning Health Fire Two Year Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="home.zoningHealthFireEveryTwoYears" id="zoningHealthFireEveryTwoYears" value="${home?.zoningHealthFireEveryTwoYears}"> *
+            #{if errors.forKey('home.zoningHealthFireEveryTwoYears')}
+            <span class="alert alert-error">${errors.forKey('home.zoningHealthFireEveryTwoYears')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="zoningHealthFireDueDate"><i class="glyphicon glyphicon-calendar"> </i>Zoning Health Fire Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="home.zoningHealthFireDueDate" id="zoningHealthFireDueDate" value="${home?.zoningHealthFireDueDate}"> *
+            #{if errors.forKey('home.zoningHealthFireDueDate')}
+            <span class="alert alert-error">${errors.forKey('home.zoningHealthFireDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+<!-- END SPAN 3-->
+</fieldset>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary" id="addFosterHome">Add Foster Home</button>
+    <a href="@{Application.searchFosterHome()}" class="btn">Cancel</a>
+</div>
+</form>
+#{/form}
+<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+ $(".date-picker").datepicker();
+</script>

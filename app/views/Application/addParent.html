@@ -1,0 +1,232 @@
+#{extends 'main.html' /}
+#{set title:'Add Parent' /}
+<legend>Add Parent Information</legend>
+#{form @saveParent()}
+<input type="hidden" name="email" value="${session?.user}">
+<input type="hidden" name="agencyName" value="${session?.agencyName}">
+<input type="hidden" name="fosterHomeId" value="${session?.fosterHomeId}">
+<form class="form-horizontal">
+<fieldset class="form-group success">
+
+<div class="form-group">
+    <label class="control-label">Is Primary Contact</label>
+    <div class="controls">
+        <input id="isPrimary" type="checkbox" name="fosterParent.isPrimary" ${fosterParent?.isPrimary ? 'checked':''}  />
+        #{if errors.forKey('fosterParent.isPrimary')}
+        <span class="alert alert-error">${errors.forKey('fosterParent.isPrimary')}</span>
+        #{/if}
+
+    </div>
+</div>
+    <div class="form-group">
+        <label class="control-label" for="name">Parent Name</label>
+        <div class="controls">
+            <input type="text" class="form-control" name="fosterParent.name" id="name" value="${fosterParent?.name}">
+            #{if errors.forKey('fosterParent.name')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.name')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="email">Email</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="email" name="fosterParent.email" value="${fosterParent?.email}">
+            #{if errors.forKey('fosterParent.email')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.email')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="phone">Phone</label>
+        <div class="controls">
+            <input type="text" class="form-control" id="phone" name="fosterParent.phone" value="${fosterParent?.phone}">
+            #{if errors.forKey('fosterParent.phone')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.phone')}</span>
+            #{/if}
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="sixMonthDueDate"><i class="glyphicon glyphicon-calendar"> </i>Six Month Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.sixMonthDueDate" id="sixMonthDueDate" value="${fosterParent?.sixMonthDueDate}"> 
+            #{if errors.forKey('fosterParent.sixMonthDueDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.sixMonthDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="medicalEvaluationCompletedDate"><i class="glyphicon glyphicon-calendar"> </i>Medical Evaluation Completed Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.medicalEvaluationCompletedDate" id="medicalEvaluationCompletedDate" value="${fosterParent?.medicalEvaluationCompletedDate}"> 
+            #{if errors.forKey('fosterParent.medicalEvaluationCompletedDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.medicalEvaluationCompletedDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="medicalEvaluationExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>Medical Evaluation Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.medicalEvaluationExpiryDate" id="medicalEvaluationExpiryDate" value="${fosterParent?.medicalEvaluationExpiryDate}"> 
+            #{if errors.forKey('fosterParent.medicalEvaluationExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.medicalEvaluationExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="cprCompletedDate"><i class="glyphicon glyphicon-calendar"> </i>CPR Completed Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.cprCompletedDate" id="cprCompletedDate" value="${fosterParent?.cprCompletedDate}"> 
+            #{if errors.forKey('fosterParent.cprCompletedDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.cprCompletedDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="cprExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>CPR Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.cprExpiryDate" id="cprExpiryDate" value="${fosterParent?.cprExpiryDate}"> 
+            #{if errors.forKey('fosterParent.cprExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.cprExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="firstAideCompletedDate"><i class="glyphicon glyphicon-calendar"> </i>First Aid Completed Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.firstAideCompletedDate" id="firstAideCompletedDate" value="${fosterParent?.firstAideCompletedDate}"> 
+            #{if errors.forKey('fosterParent.firstAideCompletedDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.firstAideCompletedDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="firstAideExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>First Aid Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.firstAideExpiryDate" id="firstAideExpiryDate" value="${fosterParent?.firstAideExpiryDate}"> 
+            #{if errors.forKey('fosterParent.firstAideExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.firstAideExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="medCertCompletedDate"><i class="glyphicon glyphicon-calendar"> </i>Med Cert Completed Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.medCertCompletedDate" id="medCertCompletedDate" value="${fosterParent?.medCertCompletedDate}"> 
+            #{if errors.forKey('fosterParent.medCertCompletedDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.medCertCompletedDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="medCertExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>Med Cert Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.medCertExpiryDate" id="medCertExpiryDate" value="${fosterParent?.medCertExpiryDate}"> 
+            #{if errors.forKey('fosterParent.medCertExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.medCertExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label class="control-label" for="driversLicenceExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>Driver's License Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.driversLicenceExpiryDate" id="driversLicenceExpiryDate" value="${fosterParent?.driversLicenceExpiryDate}"> 
+            #{if errors.forKey('fosterParent.driversLicenceExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.driversLicenceExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="autoInsuranceExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>Auto Insurance Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.autoInsuranceExpiryDate" id="autoInsuranceExpiryDate" value="${fosterParent?.autoInsuranceExpiryDate}"> 
+            #{if errors.forKey('fosterParent.autoInsuranceExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.autoInsuranceExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="autoRegistrationExpiryDate"><i class="glyphicon glyphicon-calendar"> </i>Auto Registration Expiry Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.autoRegistrationExpiryDate" id="autoRegistrationExpiryDate" value="${fosterParent?.autoRegistrationExpiryDate}"> 
+            #{if errors.forKey('fosterParent.autoRegistrationExpiryDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.autoRegistrationExpiryDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="coreTrainingCompletedDate"><i class="glyphicon glyphicon-calendar"> </i>Core Training Completed Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.coreTrainingCompletedDate" id="coreTrainingCompletedDate" value="${fosterParent?.coreTrainingCompletedDate}"> 
+            #{if errors.forKey('fosterParent.coreTrainingCompletedDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.coreTrainingCompletedDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="fiveYearCoreTrainingDueDate"><i class="glyphicon glyphicon-calendar"> </i>Five Year Core Training Due Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.fiveYearCoreTrainingDueDate" id="fiveYearCoreTrainingDueDate" value="${fosterParent?.fiveYearCoreTrainingDueDate}"> 
+            #{if errors.forKey('fosterParent.fiveYearCoreTrainingDueDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.fiveYearCoreTrainingDueDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label" for="semiAnnualEmergencySafetyDate"><i class="glyphicon glyphicon-calendar"> </i>Semi Annual Emergency Safety Date</label>
+
+        <div class="controls">
+            <input type="text" class="date-picker form-control" name="fosterParent.semiAnnualEmergencySafetyDate" id="semiAnnualEmergencySafetyDate" value="${fosterParent?.semiAnnualEmergencySafetyDate}"> 
+            #{if errors.forKey('fosterParent.semiAnnualEmergencySafetyDate')}
+            <span class="alert alert-error">${errors.forKey('fosterParent.semiAnnualEmergencySafetyDate')}</span>
+            #{/if}
+
+        </div>
+    </div>
+<!-- END SPAN 3-->
+</fieldset>
+
+<div class="form-actions">
+    <button type="submit" class="btn btn-primary" id="addFosterHome">Add Parent</button>
+    <a href="@{Application.searchFosterHome()}" class="btn">Cancel</a>
+</div>
+</form>
+#{/form}
+<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script>
+ $(".date-picker").datepicker();
+</script>

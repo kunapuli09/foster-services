@@ -1,0 +1,51 @@
+#{extends 'main.html' /}
+#{set title:'Search Employees' /}
+#{if session.user != null && session.role == 'AGENCY'}
+<div class="container">
+    <p>
+    <a href="@{Application.addEmployee(session.agencyId)}" title="Add your employee"
+       class="btn btn-primary btn-large"
+            >Add a new employee</a>
+    </p>
+    #{form @searchContacts(), id:'list'}
+    <div class="form-group">
+        <label class="name"><h4>Name</h4></label>
+        <div class="controls">
+            <input type="text" class="form-control" name="name" value="">
+            <span class="error">${errors.forKey('contact.name')}</span>
+        </div>
+    </div>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="login">Search</button>
+        <a href="@{Application.searchContacts()}"  class="btn">Cancel</a>
+    </div>
+    #{/form}
+</div>
+#{/if}
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th class="name">Name</th>
+        <th class="email">Email</th>
+        <th class="phone">Phone</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    #{paginate.list items:paginator, as:'contact'}
+    <tr class="contact" contactId="${contact.id}" draggable="true">
+        <td id="name">${contact.name}</td>
+        <td id="email">${contact.email}</td>
+        <td id="phone">${contact.phone}</td>
+        <td class="table_column_actions">
+            <a href="@{Application.addEmployee(session.agencyId,contact.email)}" class="btn btn-mini"><i class="icon-edit"></i></a>
+            <a href="" class="btn btn-mini btn-danger" data-confirm="Delete Contact.  Are you sure?"
+               data-method="delete" rel="nofollow"><i class="glyphicon glyphicon-remove"></i></a>
+        </td>
+    </tr>
+    #{/paginate.list}
+    #{paginate.controls items:paginator /}
+    #{paginate.summary items:paginator /}
+    </tbody>
+</table>
+

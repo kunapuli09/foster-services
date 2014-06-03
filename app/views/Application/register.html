@@ -1,0 +1,78 @@
+#{extends 'main.html' /}
+#{set title:'Register' /}
+#{form @save()}
+<input type="hidden" name="email" value="${session?.user}">
+<form class="form-horizontal" >
+    <fieldset class="form-group success">
+        <legend>Register</legend>
+
+        <div class="form-group">
+            <label class="control-label" for="name">Agency Name</label>
+            <div class="controls">
+                <input type="text" class="form-control" name="contact.agencyName" id="agencyName" value="${contact?.agencyName}">
+                #{if errors.forKey('contact.agencyName')}
+                <span class="alert alert-error">${errors.forKey('contact.agencyName')}</span>
+                #{/if}
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="name">Owner Name</label>
+            <div class="controls">
+                <input type="text" class="form-control" name="contact.name" id="name" value="${contact?.name}">
+                #{if errors.forKey('contact.name')}
+                <span class="alert alert-error">${errors.forKey('contact.name')}</span>
+                #{/if}
+
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" for="email">Email</label>
+            <div class="controls">
+                <input type="text" class="form-control" id="email" name="contact.email" value="${contact?.email}">
+                #{if errors.forKey('contact.email')}
+                <span class="alert alert-error">${errors.forKey('contact.email')}</span>
+                #{/if}
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="password">Password</label>
+            <div class="controls">
+                <input type="password" class="form-control" id="password" name="contact.password" value="${contact?.password}">
+                #{if errors.forKey('contact.password')}
+                <span class="alert alert-error">${errors.forKey('contact.password')}</span>
+                #{/if}
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="confirmPassword">Confirm Password</label>
+            <div class="controls">
+                <input type="password" class="form-control" id="confirmPassword" name="contact.confirmPassword" value="${contact?.confirmPassword}">
+                #{if errors.forKey('contact.confirmPassword')}
+                <span class="alert alert-error">${errors.forKey('contact.confirmPassword')}</span>
+                #{/if}
+
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" for="phone">Phone</label>
+            <div class="controls">
+                <input type="text" class="form-control" id="phone" name="contact.phone" value="${contact?.phone}">
+                #{if errors.forKey('contact.phone')}
+                <span class="alert alert-error">${errors.forKey('contact.phone')}</span>
+                #{/if}
+            </div>
+        </div>
+
+
+        <div class="form-actions">
+            <button type="submit" class="btn btn-primary" id="saveContact">Save</button>
+            <a href="@{Application.index()}"  class="btn">Cancel</a>
+        </div>
+    </fieldset>
+</form>
+#{/form}

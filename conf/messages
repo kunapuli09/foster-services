@@ -1,0 +1,9 @@
+# You can specialize this file for each language.
+# For example, for French create a messages.fr file
+#
+
+welcomeEmail.subject = Your user account, %s, has been created
+passwordEmail.subject = Password Recovery Message
+adminEmail = Administrator@starpathit.com
+resetURL = http://starpathit.com/passwordReset
+

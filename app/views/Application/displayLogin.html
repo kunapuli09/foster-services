@@ -1,0 +1,28 @@
+#{extends 'main.html' /}
+#{set title:'Login' /}
+
+<div class="container">
+    #{form @login(), id:'formLogin'}
+    <div class="form-group">
+        <label class="control-label">Email</label>
+        <div class="controls">
+            <input type="text" class="form-control" name="email" value="">
+            <span class="error">${errors.forKey('contact.email')}</span>
+
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="control-label">Password</label>
+        <div class="controls">
+            <input type="password" class="form-control" name="password" value="">
+            <span class="error">${errors.forKey('contact.password')}</span>
+
+        </div>
+    </div>
+    <a href="@{Application.forgotPassword()}"  class="label label-important">forgot password?</a>
+    <div class="form-actions">
+        <button type="submit" class="btn btn-primary" id="login">Login</button>
+        <a href="@{Application.index()}"  class="btn">Cancel</a>
+    </div>
+    #{/form}
+    </div>
