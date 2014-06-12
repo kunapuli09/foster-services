@@ -1,7 +1,6 @@
 package notifiers;
 
 import models.Contact;
-import models.Member;
 import org.apache.ivy.util.StringUtils;
 import play.i18n.Messages;
 import play.mvc.Mailer;
@@ -28,20 +27,5 @@ public class Mails extends Mailer {
         setSubject(Messages.get("passwordEmail.subject"));
         addRecipient(contact.email);
         send(contact);
-    }
-
-    public static void welcome(Member member) {
-        String verificationCode = member.getId().toString();
-        setSubject(Messages.get("welcomeEmail.subject", member.email));
-        addRecipient(member.email);
-        setFrom(Messages.get("adminEmail"));
-        send(member, verificationCode);
-    }
-
-    public static void forgotPassword(Member member) {
-        setFrom(Messages.get("adminEmail"));
-        setSubject(Messages.get("passwordEmail.subject"));
-        addRecipient(member.email);
-        send(member);
     }
 }
